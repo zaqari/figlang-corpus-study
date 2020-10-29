@@ -1,0 +1,46 @@
+.slider {
+  /* default is width 400 and margin 10 */
+	width: 400;
+	margin: 10px;
+}
+
+div.tableHeader {
+	display: block;
+	width: auto
+}
+
+div.tableDisplay {
+	clear: both;
+	border: 1px;
+	height: 250px;
+	overflow: scroll;
+	width: auto
+}
+
+thead.fixedHeader{
+	display: block;
+	width: 100%;
+}
+
+tbody.scrollBody{
+	overflow: auto;
+	width: 100%
+}
+
+/*table.dataTable.tbody{
+	height: 10px;
+	overflow-y: scroll;
+	display: block;
+}
+
+
+html>body .dataTable.thead.fixedHeader tr{
+	display: block;
+}
+
+html>body .dataTable.tbody.scrollBody {
+	display: block;
+	height: 5px;
+	overflow: auto;
+	width: 100%
+}*/
