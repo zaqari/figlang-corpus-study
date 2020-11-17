@@ -112,6 +112,14 @@ div.tableHeader {
 	width: 100%,
 }
 
+div.exampleTable {
+	clear: both;
+	border: 1px;
+	height: 250px;
+	overflow: scroll;
+	width: 100%
+}
+
 div.tableDisplay {
 	clear: both;
 	border: 1px;
