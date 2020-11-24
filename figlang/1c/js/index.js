@@ -124,7 +124,20 @@ function make_slides(f) {
   });
 
   slides.instructions_example = slide({
+    //What we need is to basically set this up to be a repeat of the multi_slider
+    //   slide, such that it handles everything the exact same, down to warnings and 
+    //   button.push().
+    //To do this, add a fake csv/json file that has examples like Lisa proposed to test
+    //   comprehension--e1. It need only be SHORTER or THE SAME LENGTH as the other
+    //   corpus entries.
     name : "instructions_example",
+    button : function() {
+      exp.go(); //use exp.go() if and only if there is no "present" data.
+    }
+  });
+
+  slides.instructions_example_test = slide({
+    name : "instructions_example_test",
     present : [e],
     data: [],
     rownames: [],
@@ -204,6 +217,20 @@ function make_slides(f) {
         "response" : this.data
       });
     },
+  });
+
+
+  slides.instructions3 = slide({
+    //What we need is to basically set this up to be a repeat of the multi_slider
+    //   slide, such that it handles everything the exact same, down to warnings and 
+    //   button.push().
+    //To do this, add a fake csv/json file that has examples like Lisa proposed to test
+    //   comprehension--e1. It need only be SHORTER or THE SAME LENGTH as the other
+    //   corpus entries.
+    name : "instructions3",
+    button : function() {
+      exp.go(); //use exp.go() if and only if there is no "present" data.
+    }
   });
 
   exp.condition = _.sample(["control", "mixed", "mixed"])
@@ -341,7 +368,8 @@ function make_slides(f) {
           "subject_information" : exp.subj_data,
           "time_in_minutes" : (Date.now() - exp.startT)/60000
       };
-      setTimeout(function() {turk.submit(exp.data);}, 1000);
+      setTimeout(function() {proliferate.submit(exp.data);}, 1000);
+      //setTimeout(function() {turk.submit(exp.data);}, 1000);
     }
   });
 
@@ -372,7 +400,7 @@ function init() {
     };
 
   //exp.structure=["i0", "instructions1", "instructions2", "multi_slider", 'subj_info', 'thanks'];
-  exp.structure=["i0", "instructions1", "instructions_example",  "multi_slider", 'subj_info', 'thanks'];
+  exp.structure=["i0", "instructions1", "instructions_example", "instructions_example_test", "instructions3",  "multi_slider", 'subj_info', 'thanks'];
   //exp.structure=["i0", "instructions1",  "multi_slider", 'subj_info', 'thanks'];
 
   exp.data_trials = [];

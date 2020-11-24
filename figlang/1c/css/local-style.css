@@ -107,10 +107,13 @@ body {
 }
 
 
+/* Table display stuff */
 div.tableHeader {
 	display: block;
-	width: 100%,
+	width: 100%;
 }
+
+div.tableDisplay thead th {position: sticky; top: 0; background-color: rgb(231, 228, 228);}
 
 div.exampleTable {
 	clear: both;
@@ -135,9 +138,9 @@ thead.fixedHeader{
 
 tbody.scrollBody{
 	overflow: auto;
-	width: 100%,
+	width: 100%;
 }
 
-tbody{
+/*tbody{
 	text-align: left;
-}
+}*/

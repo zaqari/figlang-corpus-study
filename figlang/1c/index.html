@@ -44,6 +44,12 @@
 <!-- check unique turkers -->
 <script src="../_shared/js/uniqueturker.js"></script>
 
+<script src="https://proliferate.alps.science/static/js/proliferate.js" type="text/javascript"></script>
+
+<!-- God, how much I loathe css . . . table modifiers. 
+<script src="css/dataTable.css"></script>
+<script src="css/exTable.css"></script>-->
+
 </head>
 
 <body onload="init();">
@@ -64,7 +70,7 @@
     </div>
   </nav>
 
-  <!-- specify that HIT takes up middle 2/3rds of screen with a grey border -->
+  <!-- specify that task takes up middle 2/3rds of screen with a grey border -->
   <div class="container panel panel-default col-md-8 col-md-offset-2">
     <div class="panel-body">
       <noscript>This task requires JavaScript.</noscript>
@@ -73,7 +79,7 @@
       <div class="slide" id="i0">
         <img class="meaninglogo img-rounded" src="../1c/expt-files/images/meaningLab.png"></img>
         <h3>Task</h3>
-        <p>You will be given vignettes from a transcript of an interaction between a child (*CHI) and their father (*FAT). As part of the HIT, you will be asked to give some information about each sentence in the vignette in the form of a multiple choice question. The time to complete this HIT should be about 5-10 minutes.</p>
+        <p>You will be given small snippets from a transcript of a child interacting with his/her father. As part of the task, you will be asked to give your opinion about information in these snippets. The time to complete this task should  be about 5-10 minutes.</p>
         <button class="btn btn-primary" id="start_button" type="button">Start Experiment</button>
         <h4>Legal information</h4>
         <p class="small">By answering the following questions, you are participating in a study being performed by language scientists in the Department of Language Science at UC Irvine. If you have questions about this research, please contact Zachary Rosen at <a href="mailto://zrosen@uci.edu">zrosen@uci.edu</a>, Mackenzie Kephart at <a href="mailto://mkephart@uci.edu">mkephart@uci.edu</a> , or Greg Scontras, at gscontra@uci.edu. You must be at least 18 years old to participate. Your participation in this research is voluntary. You may decline to answer any or all of the following questions. You may decline further participation, at any time, without adverse consequences. Your anonymity is assured; the researchers who have requested your participation will not receive any personal information about you.</p>
@@ -82,7 +88,6 @@
       <!-- slide with instructions -->
       <div class="slide text-left" id="instructions1">
         <h3>Instructions</h3>
-        <p>You will be given small snippets from a transcript of a child interacting with his father. As part of the HIT, you will be asked to give your opinion about information in these snippets. The time to complete this HIT should  be about 5-10 minutes.</p>
         <p>The child’s utterances are indicated with *CHI, while the father’s utterances are indicated with *FAT.</p>
         <p>You will be asked to indicate if you think the utterance on a line is possibly figurative (FIG), definitely literal (LIT), or whether you're not sure (???).</p>
         <div class="tableDisplay">
@@ -92,7 +97,7 @@
               <tr>
                 <th>FIG &nbsp; </th>
                 <th>LIT &nbsp; </th>
-                <th>UNK &nbsp; </th>
+                <th>??? &nbsp; </th>
                 <th>Sentence</th>
               </tr>
             </thead>
@@ -100,20 +105,20 @@
             <tbody>
               <tr>
                 <td><input type="radio" name="example1" value="value" id="fig"> </td>
-                <td><input type="radio" name="example1" value="value" id="lit" checked="checked"> </td>
+                <td><input type="radio" name="example1" value="value" id="lit" > </td>
                 <td><input type="radio" name="example1" value="value" id="unk"> </td>
                 <td>*CHI: Daddy, gimme gimme (!)</td>
               </tr>
               <tr>
                 <td><input type="radio" name="example2" value="value" id="fig"> </td>
-                <td><input type="radio" name="example2" value="value" id="lit" checked="checked"> </td>
+                <td><input type="radio" name="example2" value="value" id="lit"> </td>
                 <td><input type="radio" name="example2" value="value" id="unk"> </td>
                 <td>*FAT: No, not until you eat your peas . </td>
               </tr>
               <tr>
                 <td><input type="radio" name="example3" value="value" id="fig"> </td>
                 <td><input type="radio" name="example3" value="value" id="lit"> </td>
-                <td><input type="radio" name="example3" value="value" id="unk" checked="checked"> </td>
+                <td><input type="radio" name="example3" value="value" id="unk"> </td>
                 <td>*CHI: Daddy no want peas . </td>
               </tr>
             </tbody>
@@ -124,29 +129,33 @@
       </div>
 
       <!-- slide with instructions -->
-      <div class="slide text-left" id="instructions2">
+      <div class="slide text-left" id="instructions3">
         <h3>Instructions (continued)</h3>
-        <p>
-          <img class="friends" src="../1c/expt-files/images/mellowandbluesy.png"></img>
-        </p>
-        <p>After putting marbles into a box, Mellow tells her friend, Bluesy, about the box of marbles.</p>
-        <div class="alert alert-success"><b>Your task is to help Bluesy decide what Mellow meant.</b></div>
+        <p>The following pages will all have the same structure as the exercise you just completed. Each page will contain 20 sentences. For each sentence, you will need to indicate whether that sentence is literal (LIT), figurative (FIG), or if you are unsure (???).</p>
         <button class="btn btn-primary" onclick="_s.button()">Continue</button>
       </div>
 
 
       <!-- trial slide -->
       <div class="slide text-left" id="instructions_example">
-        <h3>Instructions</h3>
+        <h3>Instructions (continued)</h3>
         <p>Figurative utterances (FIG) are not literally true in context. Some figurative language uses include:</p>
         <div class="alert alert-success">
-          <p ><b>Hyperbole:</b>"This is the best day ever!" <br><em>*In a context in which it is a normal, or even just okay, day*</em></p>
-          <p><b>Understatement:</b> "It's only a little bit gross" <br><em>*in a context where the speaker clearly thinks "it" is gross*</em></p>
-          <p><b>Sarcasm:</b> "Smooth move" <br><em>*when the speaker doesn't think whatever happened was "smooth".*</em></ps>
-          <p><b>Metaphor:</b> "You're a little piggy" <br><em>*when the person being referred to is clearly not a pig*</em></p>
-          <p><b>Pretend Play:</b>"I'm a little piggy! @oink @oink @oink" <br><em>*Someone pretending to be something or someone they are not.*</em></p>
+          <p ><b>Hyperbole:</b> The use of exagerative language to describe something. <br><em>Example: <b>"This is the best day ever!"</b> <br>*In a context in which it is a normal, or even just okay, day*</em></p>
+          <p>&nbsp;</p>
+          <p><b>Understatement:</b> The use of language to deliberately down-play something. <br><em>Example: <b>"It's only a little bit gross"</b> <br>*in a context where the speaker clearly thinks "it" is gross*</em></p>
+          <p>&nbsp;</p>
+          <p><b>Sarcasm:</b> The use of language to explicitly highlight and make fun of a person or event. <br><em>Example: <b>"Smooth move"</b> <br>*when the speaker doesn't think whatever happened was "smooth".*</em></ps>
+          <p>&nbsp;</p>
+          <p><b>Metaphor:</b> Referring to someone or something as some other thing to describe them. <br><em>Example: <b>"You're a little piggy"</b> <br>*when the person being referred to is clearly not a pig*</em></p>
+          <p>&nbsp;</p>
+          <p><b>Pretend Play:</b> Pretending to be something that one is not. <br><em>Example: <b>"I'm a little piggy! @oink @oink @oink"</b> <br>*Someone pretending to be something or someone they are not.*</em></p>
         </div>
-        <p>Knowing this, before you move on see if you can find the figurative examples in the vignette below.</p>
+        <button class="btn btn-primary" onclick="_s.button()">Continue</button>
+      </div>
+      
+      <div class="slide text-left" id="instructions_example_test">
+        <p>See if you can identify the figurative examples in the snippet below.</p>
         <div class="tableDisplay">
           <table id="exTable" class="exTable">
 
@@ -154,7 +163,7 @@
               <tr>
                 <th>FIG &nbsp; </th>
                 <th>LIT &nbsp; </th>
-                <th>UNK &nbsp; </th>
+                <th>??? &nbsp; </th>
                 <th>Sentence</th>
               </tr>
             </thead>
@@ -181,7 +190,7 @@
 
       <!-- trial slide -->
       <div class="slide text-left" id="multi_slider">
-        <p>For each sentence, select whether the sentence is figurative (FIG), literal (LIT) or if you are unsure (UNK).</p>
+        <p>For each sentence, select whether the sentence is figurative (FIG), literal (LIT) or if you are unsure (???).</p>
         <!-- <span id=“emph1”><span id=“quantifier”><span id=“emph2”><span id=“rest of sentence”> -->
 
         <!-- <h3 class="amb">{{}}</h3> -->
@@ -192,7 +201,7 @@
               <tr>
                 <th>FIG &nbsp; </th>
                 <th>LIT &nbsp; </th>
-                <th>UNK &nbsp; </th>
+                <th>??? &nbsp; </th>
                 <th>Sentence</th>
               </tr>
             </thead>
@@ -217,7 +226,7 @@
         <p>Answering these questions is optional, but will help us understand your answers.</p>
 
         <div class="form-group">
-          <label class="form-label">Did you read the instructions and do you think you did the HIT correctly?</label>
+          <label class="form-label">Did you read the instructions and do you think you did the task correctly?</label>
             <div class="radio"><label><input type="radio"  name="assess" value="No"/>No</label></div>
             <div class="radio"><label><input type="radio"  name="assess" value="Yes"/>Yes</label></div>
             <div class="radio"><label><input type="radio"  name="assess" value="Confused"/>I was confused</label></div>
@@ -256,12 +265,12 @@
         </div>
 
         <div class="form-group">
-					<label for="enjoyment" class="form-label">Did you enjoy the hit?</label>
+					<label for="enjoyment" class="form-label">Did you enjoy the task?</label>
 					<select class="form-control" name="enjoyment" id="enjoyment">
             <option value="-1"></option>
-						<option value="0">Worse than the Average HIT</option>
-						<option value="1">An Average HIT</option>
-						<option value="2">Better than average HIT</option>
+						<option value="0">Worse than the Average task</option>
+						<option value="1">An Average task</option>
+						<option value="2">Better than average task</option>
 					</select>
 				</div>
 
@@ -270,13 +279,15 @@
 				  <textarea class="form-control" rows="5" name="comments" id="comments"></textarea>
 				</div>
 
-        <p>Click below to submit HIT.</p>
+        <p>Click below to submit task.</p>
         <p><button class="btn btn-primary" onclick="_s.submit()">Submit</button></p>
       </div>
 
       <!-- exit slide -->
       <div class="slide js text-center" id="thanks">
         <h3>Thanks for your time!</h3>
+        <!--         -->
+        <div class="alert alert-success"><h4>https://app.prolific.co/submissions/complete?cc=177F0F27</h4></div>
         <div><img class="friends" src="../1c/expt-files/images/thanks.png"></img></div>
       </div>
 
